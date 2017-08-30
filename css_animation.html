@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title></title>
+  <style>
+    .circle {
+      animation: ping 2000ms;
+      animation-iteration-count: infinite;
+      animation-delay: 2.1s, 480ms;
+
+      border: 2px solid black;
+      border-radius: 50%;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 0;
+    }
+
+    @keyframes ping {
+      0% {
+        height: 0;
+        opacity: 1;
+        width: 0;
+      }
+      100% {
+        height: 200px;
+        opacity: 0.01;
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+<script>
+  window.addEventListener('click', (event) => {
+    const div = document.createElement('div');
+    div.classList.add('circle');
+    div.style.top = event.clientY + 'px';
+    div.style.left = event.clientX + 'px';
+    div.addEventListener('animationend', () => {
+      document.body.removeChild(div);
+    });
+    document.body.append(div);
+  });
+</script>
+</body>
+</html>
