@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -18,6 +19,18 @@
       width: 0;
     }
 
+    p {
+      opacity: 1;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: blue;
+      font: italic;
+      transition: opacity 500ms;
+    }
+
+    p.waa {
+      opacity: 0;
+    }
+
     @keyframes ping {
       0% {
         height: 0;
@@ -32,18 +45,27 @@
     }
   </style>
 </head>
+
 <body>
-<script>
-  window.addEventListener('click', (event) => {
-    const div = document.createElement('div');
-    div.classList.add('circle');
-    div.style.top = event.clientY + 'px';
-    div.style.left = event.clientX + 'px';
-    div.addEventListener('animationend', () => {
-      document.body.removeChild(div);
+  <p id="aap">Click around</p>
+
+  <script>
+    setTimeout(function () {
+      document.getElementById('aap').className = 'waa';
+    }, 5000);
+
+    window.addEventListener('click', (event) => {
+      const div = document.createElement('div');
+      div.classList.add('circle');
+      div.style.top = event.clientY + 'px';
+      div.style.left = event.clientX + 'px';
+      div.addEventListener('animationend', () => {
+        document.body.removeChild(div);
+      });
+      document.body.append(div);
     });
-    document.body.append(div);
-  });
-</script>
+
+  </script>
 </body>
+
 </html>
